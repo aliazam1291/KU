@@ -67,7 +67,7 @@ export function HostsCarousel() {
   const [active, setActive] = useState(0)
 
   return (
-    <section className="py-20 md:py-28 bg-ku-cream">
+    <section id="hosts" style={{ scrollMarginTop: '96px' }} className="py-20 md:py-28 bg-ku-cream">
       <div className="px-10 md:px-14">
 
         {/* Header */}

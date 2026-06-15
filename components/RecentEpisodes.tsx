@@ -11,7 +11,7 @@ const episodes = [
   { num: '136', title: 'Nostalgia as a Political Tool', guest: 'Dr. Reza Karimi', dur: '1h 12m', plays: '634K', isNew: false },
 ]
 
-export function RecentEpisodes() {
+export function RecentEpisodes({ onMoreMidnightClick }: { onMoreMidnightClick?: () => void }) {
   const ref = useRef<HTMLDivElement>(null)
   const down = useRef(false), startX = useRef(0), scrollL = useRef(0)
   const velX = useRef(0), lastX = useRef(0), lastT = useRef(0)
@@ -47,9 +47,13 @@ export function RecentEpisodes() {
     <div className="border-t border-white/[0.05]">
       {/* Header */}
       <div className="flex items-center justify-between px-10 md:px-14 py-3">
-        <span className="text-[8px] tracking-[0.32em] uppercase text-ku-cream/30">
+        <button
+          type="button"
+          onClick={onMoreMidnightClick}
+          className="text-left text-[8px] tracking-[0.32em] uppercase text-ku-cream/30 hover:text-ku-cream/55 transition-colors cursor-none"
+        >
           More from Midnight Frequencies
-        </span>
+        </button>
         <div className="flex items-center gap-4">
           <a href="#" className="text-[8px] tracking-[0.2em] uppercase text-ku-cream/25 hover:text-ku-cream/55 transition-colors cursor-none">
             All episodes →

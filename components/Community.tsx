@@ -1,8 +1,7 @@
 'use client'
-import { useState, useRef } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import { motion, useInView } from 'framer-motion'
 import { MessageCircle, Radio, TrendingUp } from 'lucide-react'
-import { useEffect } from 'react'
 
 const threads = [
   {

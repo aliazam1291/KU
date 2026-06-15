@@ -89,7 +89,7 @@ export function Episodes() {
   }
 
   return (
-    <section className="py-20 md:py-28 bg-ku-cream px-10 md:px-14">
+    <section id="episodes" style={{ scrollMarginTop: '96px' }} className="py-20 md:py-28 bg-ku-cream px-10 md:px-14">
 
       {/* Header */}
       <div className="flex items-end justify-between mb-10 pb-6 border-b border-ku-bg/10">
