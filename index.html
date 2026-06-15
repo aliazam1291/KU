@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>KU — Talk Show Podcast Community</title>
+  <meta name="description" content="KU is a curated community for talk show and podcast culture. Discover, watch, and discuss the world's most compelling conversations." />
+  <link rel="stylesheet" href="css/style.css" />
+  <!-- Fonts preconnect -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+</head>
+<body>
+
+<!-- ░░ CUSTOM CURSOR ░░ -->
+<div id="cursor">
+  <div id="cursor-ring"></div>
+  <div id="cursor-dot"></div>
+</div>
+
+<!-- ░░ LOADER ░░ -->
+<div id="loader">
+  <div class="loader-logo">KU</div>
+  <div class="loader-bar"><div class="loader-fill"></div></div>
+</div>
+
+<!-- ░░ WEBGL CANVAS ░░ -->
+<canvas id="bg"></canvas>
+
+<!-- ░░ FILM GRAIN ░░ -->
+<div class="grain" aria-hidden="true"></div>
+
+<!-- ════════════════════════════════════════
+     NAV
+════════════════════════════════════════ -->
+<nav>
+  <button class="nav-burger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+
+  <a href="/" class="nav-logo">KU</a>
+
+  <div class="nav-grid" aria-label="Browse">
+    <span></span><span></span>
+    <span></span><span></span>
+  </div>
+</nav>
+
+<!-- ════════════════════════════════════════
+     HERO
+════════════════════════════════════════ -->
+<section id="hero">
+  <div class="hero-body">
+
+    <!-- LEFT: info panel -->
+    <div class="hero-left">
+
+      <div class="hero-rating">
+        <span class="hero-rating-label">Rating</span>
+        <span class="hero-rating-num">9.2</span>
+        <span class="hero-rating-denom">/ 10</span>
+      </div>
+
+      <div class="hero-genres">
+        <span class="hero-genre">Talk Show</span>
+        <span class="hero-genre-sep">|</span>
+        <span class="hero-genre">Culture</span>
+        <span class="hero-genre-sep">|</span>
+        <span class="hero-genre">Podcast</span>
+      </div>
+
+      <h1 class="hero-title">
+        <span class="hero-title-line">
+          <span class="hero-title-inner">Midnight</span>
+        </span>
+        <span class="hero-title-line">
+          <span class="hero-title-inner">Frequencies</span>
+        </span>
+      </h1>
+
+      <p class="hero-meta">
+        2024 &nbsp;|&nbsp; <strong>Host:</strong> Alex Mercer
+        &nbsp;|&nbsp; <strong>Feat:</strong> Various Guests
+      </p>
+
+      <p class="hero-desc">
+        Late-night conversations that refuse to stay shallow.
+        Where culture, philosophy, and the human condition collide —
+        unscripted, unfiltered, unmissable.
+      </p>
+
+      <div class="hero-actions">
+        <button class="btn-play">
+          <svg viewBox="0 0 14 14" fill="currentColor"><polygon points="2,1 13,7 2,13"/></svg>
+          Play Now
+        </button>
+        <button class="btn-watchlist">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.2">
+            <path d="M8 13.7C8 13.7 1.5 9.5 1.5 5.2a3.5 3.5 0 0 1 6.5-1.8A3.5 3.5 0 0 1 14.5 5.2c0 4.3-6.5 8.5-6.5 8.5z"/>
+          </svg>
+          Add to Watchlist
+        </button>
+      </div>
+    </div>
+
+    <!-- CENTER: play button -->
+    <div class="hero-center">
+      <span class="hero-duration">2 H &nbsp; 18 MIN</span>
+      <div class="play-btn">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="white">
+          <polygon points="5,2 18,10 5,18"/>
+        </svg>
+      </div>
+    </div>
+
+    <!-- RIGHT: watchlist side button -->
+    <div class="hero-right">
+      <div class="hero-wl">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.2">
+          <path d="M10 17C10 17 2 12 2 6.5a4 4 0 0 1 8-1.1A4 4 0 0 1 18 6.5C18 12 10 17 10 17z"/>
+        </svg>
+        <span class="hero-wl-label">Add to Watchlist</span>
+      </div>
+    </div>
+
+  </div><!-- /.hero-body -->
+
+  <!-- PEOPLE ALSO LIKED strip -->
+  <div class="also-liked">
+    <div class="also-liked-head">
+      <span class="also-liked-title">People Also Liked</span>
+      <div class="also-liked-arrows">
+        <button class="arr-btn prev" aria-label="Previous">
+          <svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.5">
+            <polyline points="7,1 3,5 7,9"/>
+          </svg>
+        </button>
+        <button class="arr-btn next" aria-label="Next">
+          <svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.5">
+            <polyline points="3,1 7,5 3,9"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <div class="cards-viewport">
+      <div class="cards-track">
+
+        <div class="card-sm">
+          <div class="card-sm-bg" style="background:linear-gradient(150deg,#1a0c2e 0%,#070510 100%)"></div>
+          <div class="card-sm-shade"></div>
+          <div class="card-sm-info">
+            <div class="card-sm-name">Shadow Protocol</div>
+            <div class="card-sm-year">2024</div>
+          </div>
+        </div>
+
+        <div class="card-sm">
+          <div class="card-sm-bg" style="background:linear-gradient(150deg,#051e1a 0%,#030d0b 100%)"></div>
+          <div class="card-sm-shade"></div>
+          <div class="card-sm-info">
+            <div class="card-sm-name">Ocean Frequencies</div>
+            <div class="card-sm-year">2023</div>
+          </div>
+        </div>
+
+        <div class="card-sm">
+          <div class="card-sm-bg" style="background:linear-gradient(150deg,#1e0808 0%,#0c0404 100%)"></div>
+          <div class="card-sm-shade"></div>
+          <div class="card-sm-info">
+            <div class="card-sm-name">Crimson Hours</div>
+            <div class="card-sm-year">2024</div>
+          </div>
+        </div>
+
+        <div class="card-sm">
+          <div class="card-sm-bg" style="background:linear-gradient(150deg,#060e1e 0%,#03060e 100%)"></div>
+          <div class="card-sm-shade"></div>
+          <div class="card-sm-info">
+            <div class="card-sm-name">Null Space</div>
+            <div class="card-sm-year">2023</div>
+          </div>
+        </div>
+
+        <div class="card-sm">
+          <div class="card-sm-bg" style="background:linear-gradient(150deg,#0a1408 0%,#050a04 100%)"></div>
+          <div class="card-sm-shade"></div>
+          <div class="card-sm-info">
+            <div class="card-sm-name">Green Room</div>
+            <div class="card-sm-year">2024</div>
+          </div>
+        </div>
+
+        <div class="card-sm">
+          <div class="card-sm-bg" style="background:linear-gradient(150deg,#1c1005 0%,#0a0703 100%)"></div>
+          <div class="card-sm-shade"></div>
+          <div class="card-sm-info">
+            <div class="card-sm-name">Ember Sessions</div>
+            <div class="card-sm-year">2024</div>
+          </div>
+        </div>
+
+        <div class="card-sm">
+          <div class="card-sm-bg" style="background:linear-gradient(150deg,#0e0820 0%,#07051a 100%)"></div>
+          <div class="card-sm-shade"></div>
+          <div class="card-sm-info">
+            <div class="card-sm-name">The Quiet Hours</div>
+            <div class="card-sm-year">2023</div>
+          </div>
+        </div>
+
+        <div class="card-sm">
+          <div class="card-sm-bg" style="background:linear-gradient(150deg,#14100a 0%,#0a0805 100%)"></div>
+          <div class="card-sm-shade"></div>
+          <div class="card-sm-info">
+            <div class="card-sm-name">Neon Requiem</div>
+            <div class="card-sm-year">2024</div>
+          </div>
+        </div>
+
+      </div><!-- /.cards-track -->
+    </div><!-- /.cards-viewport -->
+  </div><!-- /.also-liked -->
+</section>
+
+<!-- ════════════════════════════════════════
+     MARQUEE
+════════════════════════════════════════ -->
+<div class="marquee-section">
+  <div class="marquee-track" aria-hidden="true">
+    <!-- repeated twice for seamless loop -->
+    <div class="marquee-item">
+      <span class="marquee-text">The Signal</span>
+      <span class="marquee-dot"></span>
+      <span class="marquee-text">Echo Chamber</span>
+      <span class="marquee-dot"></span>
+      <span class="marquee-text">Midnight Frequencies</span>
+      <span class="marquee-dot"></span>
+      <span class="marquee-text">Null Space</span>
+      <span class="marquee-dot"></span>
+      <span class="marquee-text">Shadow Protocol</span>
+      <span class="marquee-dot"></span>
+      <span class="marquee-text">The Quiet Hours</span>
+      <span class="marquee-dot"></span>
+      <span class="marquee-text">Ocean Frequencies</span>
+      <span class="marquee-dot"></span>
+      <span class="marquee-text">Ember Sessions</span>
+      <span class="marquee-dot"></span>
+    </div>
+    <div class="marquee-item" aria-hidden="true">
+      <span class="marquee-text">The Signal</span>
+      <span class="marquee-dot"></span>
+      <span class="marquee-text">Echo Chamber</span>
+      <span class="marquee-dot"></span>
+      <span class="marquee-text">Midnight Frequencies</span>
+      <span class="marquee-dot"></span>
+      <span class="marquee-text">Null Space</span>
+      <span class="marquee-dot"></span>
+      <span class="marquee-text">Shadow Protocol</span>
+      <span class="marquee-dot"></span>
+      <span class="marquee-text">The Quiet Hours</span>
+      <span class="marquee-dot"></span>
+      <span class="marquee-text">Ocean Frequencies</span>
+      <span class="marquee-dot"></span>
+      <span class="marquee-text">Ember Sessions</span>
+      <span class="marquee-dot"></span>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════
+     FEATURED SHOWS
+════════════════════════════════════════ -->
+<section class="section" id="shows">
+  <div class="section-head">
+    <div>
+      <p class="section-eyebrow">Curated for you</p>
+      <h2 class="section-h" data-anim="chars">Featured Shows</h2>
+    </div>
+    <a href="#" class="section-link">View all &rarr;</a>
+  </div>
+
+  <div class="shows-grid" data-anim="cards">
+
+    <div class="show-card">
+      <div class="show-card-bg" style="background:linear-gradient(160deg,#0d1a38 0%,#040810 100%)"></div>
+      <div class="show-card-shade"></div>
+      <span class="show-card-num">01</span>
+      <div class="show-card-body">
+        <div class="show-card-tag">Documentary · Culture</div>
+        <h3 class="show-card-title">The Signal</h3>
+        <div class="show-card-meta">
+          <span>S3 · E12</span>
+          <span>1h 44m</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="show-card">
+      <div class="show-card-bg" style="background:linear-gradient(160deg,#041e1a 0%,#020d0b 100%)"></div>
+      <div class="show-card-shade"></div>
+      <span class="show-card-num">02</span>
+      <div class="show-card-body">
+        <div class="show-card-tag">Interview · Philosophy</div>
+        <h3 class="show-card-title">Echo Chamber</h3>
+        <div class="show-card-meta">
+          <span>S2 · E08</span>
+          <span>2h 06m</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="show-card">
+      <div class="show-card-bg" style="background:linear-gradient(160deg,#1a0520 0%,#09030f 100%)"></div>
+      <div class="show-card-shade"></div>
+      <span class="show-card-num">03</span>
+      <div class="show-card-body">
+        <div class="show-card-tag">Sci-Fi · Drama</div>
+        <h3 class="show-card-title">Neon Requiem</h3>
+        <div class="show-card-meta">
+          <span>S1 · E06</span>
+          <span>1h 52m</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════
+     COMMUNITY / LIVE NOW
+════════════════════════════════════════ -->
+<section class="section" id="community">
+  <div class="section-head">
+    <div>
+      <p class="section-eyebrow">Happening now</p>
+      <h2 class="section-h" data-anim="chars">Live Community</h2>
+    </div>
+    <a href="#" class="section-link">Join the room &rarr;</a>
+  </div>
+
+  <div class="bento-grid" data-anim="bento">
+
+    <!-- large card -->
+    <div class="bento-card">
+      <div class="bento-bg" style="background:linear-gradient(160deg,#08082a 0%,#030308 100%)"></div>
+      <div class="bento-shade"></div>
+      <div class="bento-body">
+        <div class="bento-live">
+          <span class="bento-live-dot"></span>
+          Live Now
+        </div>
+        <h3 class="bento-title">Midnight Frequencies<br>Episode 31: The Language of Silence</h3>
+        <p class="bento-meta">2,841 watching · Alex Mercer + Dr. Priya Rao</p>
+      </div>
+    </div>
+
+    <!-- small card 1 -->
+    <div class="bento-card">
+      <div class="bento-bg" style="background:linear-gradient(160deg,#120809 0%,#0a0406 100%)"></div>
+      <div class="bento-shade"></div>
+      <div class="bento-body">
+        <h3 class="bento-title">Crimson Hours</h3>
+        <p class="bento-meta">New episode · 58 min ago</p>
+      </div>
+    </div>
+
+    <!-- small card 2 -->
+    <div class="bento-card">
+      <div class="bento-bg" style="background:linear-gradient(160deg,#050e1a 0%,#030710 100%)"></div>
+      <div class="bento-shade"></div>
+      <div class="bento-body">
+        <h3 class="bento-title">Null Space</h3>
+        <p class="bento-meta">Season finale · 12 hrs ago</p>
+      </div>
+    </div>
+
+    <!-- small card 3 -->
+    <div class="bento-card">
+      <div class="bento-bg" style="background:linear-gradient(160deg,#091408 0%,#050a04 100%)"></div>
+      <div class="bento-shade"></div>
+      <div class="bento-body">
+        <h3 class="bento-title">Green Room</h3>
+        <p class="bento-meta">Replay available · 2 days ago</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════
+     EPISODES
+════════════════════════════════════════ -->
+<section class="section" id="episodes">
+  <div class="section-head">
+    <div>
+      <p class="section-eyebrow">Latest drops</p>
+      <h2 class="section-h" data-anim="chars">New Episodes</h2>
+    </div>
+    <a href="#" class="section-link">Full archive &rarr;</a>
+  </div>
+
+  <ul class="ep-list" data-anim="episodes">
+
+    <li class="ep-item">
+      <div class="ep-main">
+        <span class="ep-num">01</span>
+        <div class="ep-info">
+          <div class="ep-tag">Midnight Frequencies · S3</div>
+          <h3 class="ep-title">The Language of Silence</h3>
+        </div>
+        <span class="ep-dur">2h 18m</span>
+      </div>
+      <p class="ep-desc">
+        Alex Mercer sits down with cognitive linguist Dr. Priya Rao to explore what we communicate when we say nothing at all. A conversation three years in the making.
+      </p>
+    </li>
+
+    <li class="ep-item">
+      <div class="ep-main">
+        <span class="ep-num">02</span>
+        <div class="ep-info">
+          <div class="ep-tag">Echo Chamber · S2</div>
+          <h3 class="ep-title">Maps of the Unmappable</h3>
+        </div>
+        <span class="ep-dur">1h 54m</span>
+      </div>
+      <p class="ep-desc">
+        Cartography as metaphor. Four artists describe the territories inside their own minds — and the borders they refuse to cross.
+      </p>
+    </li>
+
+    <li class="ep-item">
+      <div class="ep-main">
+        <span class="ep-num">03</span>
+        <div class="ep-info">
+          <div class="ep-tag">The Signal · S3</div>
+          <h3 class="ep-title">Dead Stars Still Burn</h3>
+        </div>
+        <span class="ep-dur">1h 44m</span>
+      </div>
+      <p class="ep-desc">
+        What happens to culture when everything is archived forever? A conversation about memory, forgetting, and the tyranny of the algorithm.
+      </p>
+    </li>
+
+    <li class="ep-item">
+      <div class="ep-main">
+        <span class="ep-num">04</span>
+        <div class="ep-info">
+          <div class="ep-tag">Green Room · S1</div>
+          <h3 class="ep-title">The Night Before Everything Changed</h3>
+        </div>
+        <span class="ep-dur">1h 29m</span>
+      </div>
+      <p class="ep-desc">
+        Six musicians reveal the conversation they had with themselves the night before their biggest performances. Raw, unrehearsed, unforgettable.
+      </p>
+    </li>
+
+    <li class="ep-item">
+      <div class="ep-main">
+        <span class="ep-num">05</span>
+        <div class="ep-info">
+          <div class="ep-tag">Neon Requiem · S1</div>
+          <h3 class="ep-title">Cities We Carry Inside</h3>
+        </div>
+        <span class="ep-dur">2h 02m</span>
+      </div>
+      <p class="ep-desc">
+        Writers, architects, and urban nomads discuss the cities they left behind — and why those cities never really let them go.
+      </p>
+    </li>
+
+  </ul>
+</section>
+
+<!-- ════════════════════════════════════════
+     FOOTER
+════════════════════════════════════════ -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-logo">KU</div>
+    <p class="footer-tagline">
+      A curated space for conversations worth having twice.
+      Talk shows. Podcasts. Community.
+    </p>
+  </div>
+
+  <div class="footer-links">
+    <a href="#" class="footer-link">Shows</a>
+    <a href="#" class="footer-link">Community</a>
+    <a href="#" class="footer-link">Watchlist</a>
+    <a href="#" class="footer-link">Episodes</a>
+    <a href="#" class="footer-link">About</a>
+    <a href="#" class="footer-link">Careers</a>
+    <a href="#" class="footer-link">Press</a>
+  </div>
+
+  <div class="footer-btm">
+    <span class="footer-copy">&copy; 2024 KU &mdash; All rights reserved</span>
+    <div class="footer-socials">
+      <a href="#" class="social-link">Instagram</a>
+      <a href="#" class="social-link">X</a>
+      <a href="#" class="social-link">YouTube</a>
+      <a href="#" class="social-link">Spotify</a>
+    </div>
+  </div>
+</footer>
+
+<!-- ─────────────────────────────────────
+     SCRIPTS
+───────────────────────────────────── -->
+<!-- Three.js r128 (last version with global THREE) -->
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/build/three.min.js"></script>
+
+<!-- GSAP + ScrollTrigger -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+<!-- Lenis smooth scroll -->
+<script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/bundled/lenis.min.js"></script>
+
+<!-- KU scripts -->
+<script src="js/main.js"></script>
+<script src="js/cursor.js"></script>
+<script src="js/app.js"></script>
+
+</body>
+</html>
