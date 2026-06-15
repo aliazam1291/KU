@@ -74,7 +74,7 @@ export function Community() {
   }
 
   return (
-    <section className="py-20 md:py-28 bg-ku-bg px-10 md:px-14 border-t border-white/[0.04]">
+    <section className="py-20 md:py-28 bg-ku-bg px-4 sm:px-6 md:px-10 lg:px-14 border-t border-white/[0.04]">
 
       {/* Header row */}
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-14">

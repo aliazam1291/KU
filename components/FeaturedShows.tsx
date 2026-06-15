@@ -48,10 +48,10 @@ export function FeaturedShows() {
   const [active, setActive] = useState('all')
 
   return (
-    <section id="shows" style={{ scrollMarginTop: '96px' }} className="py-20 md:py-28 bg-ku-bg px-10 md:px-14">
+    <section id="shows" style={{ scrollMarginTop: '96px' }} className="py-20 md:py-28 bg-ku-bg px-4 sm:px-6 md:px-10 lg:px-14">
 
       {/* Header */}
-      <div className="flex items-end justify-between mb-10 pb-6 border-b border-white/[0.06]">
+      <div className="flex flex-col gap-6 md:flex-row md:items-end justify-between mb-10 pb-6 border-b border-white/[0.06]">
         <div>
           <motion.p
             initial={{ opacity: 0 }}

@@ -89,7 +89,7 @@ export function Episodes() {
   }
 
   return (
-    <section id="episodes" style={{ scrollMarginTop: '96px' }} className="py-20 md:py-28 bg-ku-cream px-10 md:px-14">
+    <section id="episodes" style={{ scrollMarginTop: '96px' }} className="py-20 md:py-28 bg-ku-cream px-4 sm:px-6 md:px-10 lg:px-14">
 
       {/* Header */}
       <div className="flex items-end justify-between mb-10 pb-6 border-b border-ku-bg/10">
@@ -200,7 +200,7 @@ export function Episodes() {
               </div>
 
               {/* Hover-expanded description + progress bar */}
-              <div className="max-h-0 overflow-hidden transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:max-h-[140px] pl-[88px]">
+              <div className="max-h-0 overflow-hidden transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:max-h-[140px] pl-0 md:pl-[88px]">
                 <p className="text-[13px] leading-relaxed text-ku-bg/48 pb-3 pr-4">
                   {ep.desc}
                 </p>
@@ -224,7 +224,7 @@ export function Episodes() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6 }}
-        className="mt-10 flex items-center justify-between"
+        className="mt-10 flex flex-col gap-4 md:flex-row items-start md:items-center justify-between"
       >
         <p className="text-[12px] text-ku-bg/40 leading-relaxed max-w-[360px]">
           New episodes every Thursday. Subscribe so you never miss a conversation.

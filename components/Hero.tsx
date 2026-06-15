@@ -118,8 +118,15 @@ export function Hero() {
     setActiveEpIndex(index)
   }
 
+  function handleMoreMidnightClick() {
+    const nextIndex = (activeEpIndex + 1) % EPISODE_DATABASE.length
+    setIsPlaying(false)
+    setProgress(0)
+    setActiveEpIndex(nextIndex)
+  }
+
   return (
-    <section ref={sectionRef} className="relative min-h-screen flex flex-col justify-between overflow-hidden bg-[#050508] text-white">
+    <section id="hero" ref={sectionRef} className="relative min-h-screen flex flex-col justify-between overflow-hidden bg-[#050508] text-white">
       
       {/* Background Media Crossfade */}
       <div className="absolute inset-0 z-0">
@@ -152,13 +159,13 @@ export function Hero() {
         style={{ mixBlendMode: 'screen', opacity: 0.35 }} 
       />
 
-      <div className="relative z-[2] w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex-1 flex flex-col justify-center pt-24 pb-12">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center h-full">
+      <div className="relative z-[2] w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-10 xl:px-12 flex-1 flex flex-col justify-center pt-20 pb-10 sm:pt-24 sm:pb-12">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 items-center h-full">
           
           {/* ── LEFT COLUMN: Text Content & Player ── */}
           <motion.div
             style={{ x: springX, y: springY }}
-            className="col-span-1 lg:col-span-7 flex flex-col justify-center order-2 lg:order-1"
+            className="col-span-1 lg:col-span-7 min-w-0 flex flex-col justify-center order-2 lg:order-1"
           >
             {/* 4. Wrap text content in AnimatePresence for smooth data swaps */}
             <AnimatePresence mode="wait">
@@ -259,7 +266,7 @@ export function Hero() {
           </motion.div>
 
           {/* ── RIGHT COLUMN: Portraits Stack (Animated Crossfade) ── */}
-          <div className="col-span-1 lg:col-span-5 flex flex-row lg:flex-col items-center justify-center gap-8 lg:gap-0 order-1 lg:order-2 bg-gradient-to-b from-white/[0.02] to-transparent lg:bg-none p-6 lg:p-0 rounded-2xl border border-white/[0.02] lg:border-none">
+          <div className="col-span-1 lg:col-span-5 min-w-0 flex flex-row lg:flex-col items-center justify-center gap-8 lg:gap-0 order-1 lg:order-2 bg-gradient-to-b from-white/[0.02] to-transparent lg:bg-none p-4 sm:p-6 lg:p-0 rounded-2xl border border-white/[0.02] lg:border-none">
             <AnimatePresence mode="wait">
               <motion.div
                 key={activeEp.id}
@@ -315,7 +322,7 @@ export function Hero() {
         {/* 5. Pass the state modifier down to your child component */}
         {/* Make sure RecentEpisodes accepts an onSelectEpisode prop like this in its definition: */}
         {/* export function RecentEpisodes({ onSelectEpisode }: { onSelectEpisode: (index: number) => void }) */}
-        <RecentEpisodes onSelectEpisode={(idIndex: number) => handleSelectEpisode(idIndex)} />
+        <RecentEpisodes onMoreMidnightClick={handleMoreMidnightClick} />
       </div>
 
       <style jsx global>{`

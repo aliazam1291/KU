@@ -68,7 +68,7 @@ export function HostsCarousel() {
 
   return (
     <section id="hosts" style={{ scrollMarginTop: '96px' }} className="py-20 md:py-28 bg-ku-cream">
-      <div className="px-10 md:px-14">
+      <div className="px-4 sm:px-6 md:px-10 lg:px-14">
 
         {/* Header */}
         <div className="flex items-end justify-between mb-10">
@@ -117,7 +117,7 @@ export function HostsCarousel() {
         </div>
 
         {/* Expanding carousel */}
-        <div className="flex gap-[3px] h-[520px] md:h-[580px] overflow-hidden">
+        <div className="flex gap-[3px] h-[420px] sm:h-[480px] md:h-[540px] overflow-hidden">
           {hosts.map((host, i) => (
             <div
               key={host.name}

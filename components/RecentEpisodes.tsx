@@ -46,7 +46,7 @@ export function RecentEpisodes({ onMoreMidnightClick }: { onMoreMidnightClick?: 
   return (
     <div className="border-t border-white/[0.05]">
       {/* Header */}
-      <div className="flex items-center justify-between px-10 md:px-14 py-3">
+      <div className="flex flex-col gap-3 sm:flex-row sm:items-center justify-between px-4 sm:px-6 md:px-10 lg:px-14 py-3">
         <button
           type="button"
           onClick={onMoreMidnightClick}
@@ -55,7 +55,7 @@ export function RecentEpisodes({ onMoreMidnightClick }: { onMoreMidnightClick?: 
           More from Midnight Frequencies
         </button>
         <div className="flex items-center gap-4">
-          <a href="#" className="text-[8px] tracking-[0.2em] uppercase text-ku-cream/25 hover:text-ku-cream/55 transition-colors cursor-none">
+          <a href="#episodes" className="text-[8px] tracking-[0.2em] uppercase text-ku-cream/25 hover:text-ku-cream/55 transition-colors cursor-none">
             All episodes →
           </a>
           <div className="flex gap-2">
@@ -71,14 +71,14 @@ export function RecentEpisodes({ onMoreMidnightClick }: { onMoreMidnightClick?: 
 
       {/* Episode cards */}
       <div ref={ref}
-        className="overflow-x-hidden cursor-grab select-none"
+        className="overflow-x-auto touch-pan-x cursor-grab select-none"
         onPointerDown={onDown} onPointerMove={onMove}
         onPointerUp={onUp} onPointerCancel={onUp}
       >
-        <div className="flex gap-px pb-5 px-10 md:px-14">
+        <div className="flex gap-px pb-5 px-4 sm:px-6 md:px-10 lg:px-14">
           {episodes.map(ep => (
             <div key={ep.num}
-              className="flex-shrink-0 w-[220px] border border-white/[0.05] bg-white/[0.02] p-4 group hover:bg-white/[0.04] hover:border-white/10 transition-all duration-300 cursor-none"
+              className="flex-shrink-0 min-w-[200px] w-[220px] sm:w-[240px] border border-white/[0.05] bg-white/[0.02] p-4 group hover:bg-white/[0.04] hover:border-white/10 transition-all duration-300 cursor-none"
             >
               <div className="flex items-start justify-between mb-3">
                 <span className="font-mono text-[9px] text-ku-gold/50 group-hover:text-ku-gold/80 transition-colors">
